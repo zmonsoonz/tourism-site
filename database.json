@@ -1,0 +1,23 @@
+{
+  "menu": [
+    {
+      "title": "Sailing",
+      "src": "images/act-1.jpg"
+    },
+    {
+      "title": "Climbing",
+      "src": "images/act-2.jpg"
+    },
+    {
+      "title": "Skiing",
+      "src": "images/act-3.jpg"
+    },
+    {
+      "title": "Hiking",
+      "src": "images/act-4.jpg"
+    }
+  ],
+  "requests": [
+
+  ]
+}
