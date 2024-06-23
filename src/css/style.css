@@ -15,7 +15,7 @@ a {
     padding: 0 16px;
 }
 .main-screen {
-    background: url("images/main-screen-bg.jpg");
+    background: url("../images/main-screen-bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     margin-top: -42px;
