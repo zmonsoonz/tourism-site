@@ -29,14 +29,11 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
     //Gamb-search
-    let searchBtn = document.querySelector('.search-obj-1');
-    let searchRowGamb = document.querySelector('.search-row-gamb');
-    let searchRow = document.querySelector('.search-row');
+    const searchBtn = document.querySelector('.search-obj-1'), searchRowGamb = document.querySelector('.search-row-gamb'), searchRow = document.querySelector('.search-row'), searchBtnGamb = document.querySelectorAll('.search-obj-1-gamb');
     searchBtn.addEventListener('click', () => {
         searchRowGamb.classList.toggle('search-active');
         searchRow.classList.toggle("search-row-border");
     });
-    let searchBtnGamb = document.querySelectorAll('.search-obj-1-gamb');
     searchBtnGamb.forEach((item) => {
         item.addEventListener('click', () => {
             searchBtn.innerHTML = item.innerHTML;
@@ -85,12 +82,10 @@ window.addEventListener('DOMContentLoaded', () => {
                     'Content-Type': 'application/json'
                 },
                 body: json
-            }).then(data => {
-                console.log(data);
+            }).then(() => {
                 form.reset();
                 ModalOpen();
-            }).catch((e) => {
-                console.log(e);
+            }).catch(() => {
                 form.reset();
                 Wrong();
                 ModalOpen();

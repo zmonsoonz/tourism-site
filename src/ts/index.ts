@@ -36,29 +36,28 @@ window.addEventListener('DOMContentLoaded', () => {
           menu = document.querySelector('.menu') as ElementType,
           mainText = document.querySelector('.main') as ElementType;
 
-    menuBtn.addEventListener('click', () =>{
+    menuBtn.addEventListener('click', ():void => {
 	    menu.classList.toggle('active');
         if (menu.classList.contains('active')) {
-            mainText.style.margin = '0px auto';
+            mainText.style.margin = '0px auto' as string;
         }
         else {
-            mainText.style.margin = '183px auto 0px auto';
+            mainText.style.margin = '183px auto 0px auto' as string;
         }
     });
     
     //Gamb-search
-    let searchBtn = document.querySelector('.search-obj-1') as ElementType;
-    let searchRowGamb = document.querySelector('.search-row-gamb') as ElementType;
-    let searchRow = document.querySelector('.search-row') as ElementType;
+    const searchBtn = document.querySelector('.search-obj-1') as ElementType,
+          searchRowGamb = document.querySelector('.search-row-gamb') as ElementType,
+          searchRow = document.querySelector('.search-row') as ElementType,
+          searchBtnGamb = document.querySelectorAll('.search-obj-1-gamb') as NodeListType;
 
-    searchBtn.addEventListener('click', () => {
+    searchBtn.addEventListener('click', ():void => {
         searchRowGamb.classList.toggle('search-active');
         searchRow.classList.toggle("search-row-border");
     });
 
-    let searchBtnGamb = document.querySelectorAll('.search-obj-1-gamb') as NodeListType;
-
-    searchBtnGamb.forEach((item) => {
+    searchBtnGamb.forEach((item):void => {
         item.addEventListener('click', () => {
             searchBtn.innerHTML = item.innerHTML as InnerHTMLType;
             searchRowGamb.classList.toggle('search-active');
@@ -113,12 +112,10 @@ window.addEventListener('DOMContentLoaded', () => {
                     'Content-Type': 'application/json'
                 },
                 body: json
-            }).then(data => {
-                console.log(data);
+            }).then(():void => {
                 form.reset();
                 ModalOpen();
-            }).catch((e) => {
-                console.log(e);
+            }).catch(():void => {
                 form.reset();
                 Wrong();
                 ModalOpen();
@@ -131,18 +128,18 @@ window.addEventListener('DOMContentLoaded', () => {
     const modal = document.querySelector('.modal') as ElementType;
     const modalBtn = document.querySelector('.modal-btn') as ElementType;
 
-    function ModalClose() {
+    function ModalClose():void {
         modal.classList.remove('show');
         modal.classList.add('hide');
         document.body.style.overflow = '' as string;
     }
 
-    function Wrong() {
+    function Wrong():void {
         const modalText = document.querySelector('.modal-text') as ElementType;
         modalText.textContent = "Something wrong..." as string;
     };
 
-    function ModalOpen() {
+    function ModalOpen():void {
         modal.classList.add('show');
         modal.classList.remove('hide');
         document.body.style.overflow = 'hidden' as string;
@@ -150,13 +147,13 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     modalBtn.addEventListener('click', ModalClose);
-    modal.addEventListener('click', (e: MouseEvent) => {
+    modal.addEventListener('click', (e: MouseEvent):void => {
         if (e.target === modal) {
             ModalClose();
         };
     });
 
-    document.addEventListener('keydown', (e: KeyboardEvent) => {
+    document.addEventListener('keydown', (e: KeyboardEvent):void => {
         if (e.code === "Escape") {
             ModalClose();
         };
