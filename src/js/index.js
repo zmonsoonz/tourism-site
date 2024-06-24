@@ -1,54 +1,22 @@
 "use strict";
 window.addEventListener('DOMContentLoaded', () => {
     //Tabs
-    const tabs = document.querySelectorAll('.main-header-item'), tabsParent = document.querySelector('.main-header');
-    function MakeUnactive() {
-        tabs.forEach(item => {
-            item.classList.remove('main-header-active');
-        });
-    }
-    ;
-    function MakeActive(i = 0) {
-        tabs[i].classList.add('main-header-active');
-    }
-    ;
-    tabsParent.addEventListener('click', (event) => {
-        const target = event.target;
-        if (target && target.classList.contains('main-header-item')) {
+    const headerTabs = document.querySelectorAll('.main-header-item'), headerTabsParent = document.querySelector('.main-header'), gambTabs = document.querySelectorAll('.menu-item'), gambTabsParent = document.querySelector('.menu');
+    headerTabsParent.addEventListener('click', (e) => changeActive(e, headerTabs, 'main-header-item'));
+    gambTabsParent.addEventListener('click', (e) => changeActive(e, gambTabs, 'menu-item'));
+    function changeActive(e, tabs, classSelector) {
+        const target = e.target;
+        if (target && target.classList.contains(classSelector)) {
             tabs.forEach((item, i) => {
                 if (target == item) {
-                    MakeUnactive();
-                    MakeActive(i);
+                    tabs.forEach(item => item.classList.remove('item-active'));
+                    tabs[i].classList.add('item-active');
                 }
                 ;
             });
         }
         ;
-    });
-    const gambTabs = document.querySelectorAll('.menu-item'), gambTabsParent = document.querySelector('.menu');
-    function MakeUnactiveGamb() {
-        gambTabs.forEach(item => {
-            item.classList.remove('menu-item-active');
-        });
     }
-    ;
-    function MakeActiveGamb(i = 0) {
-        gambTabs[i].classList.add('menu-item-active');
-    }
-    ;
-    gambTabsParent.addEventListener('click', (e) => {
-        const gambTarget = e.target;
-        if (gambTarget && gambTarget.classList.contains('menu-item')) {
-            gambTabs.forEach((item, i) => {
-                if (gambTarget == item) {
-                    MakeUnactiveGamb();
-                    MakeActiveGamb(i);
-                }
-                ;
-            });
-        }
-        ;
-    });
     //Gamb-menu
     const menuBtn = document.querySelector('.gamb-menu'), menu = document.querySelector('.menu'), mainText = document.querySelector('.main');
     menuBtn.addEventListener('click', () => {

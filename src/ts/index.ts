@@ -10,55 +10,25 @@ interface Activity {
 window.addEventListener('DOMContentLoaded', () => {
 
     //Tabs
-    const tabs = document.querySelectorAll('.main-header-item') as NodeListType,
-          tabsParent = document.querySelector('.main-header') as ElementType;
-
-    function MakeUnactive() {
-        tabs.forEach(item => {
-            item.classList.remove('main-header-active');
-        }); 
-    };
-    
-    function MakeActive(i:number = 0) {
-        tabs[i].classList.add('main-header-active');
-    };
-
-    tabsParent.addEventListener('click', (event:MouseEvent) => {
-        const target = event.target as ElementType;
-        if (target && target.classList.contains('main-header-item')) {
-            tabs.forEach((item, i) => {
-                if (target == item) {
-                    MakeUnactive();
-                    MakeActive(i);
-                };
-            });
-        };
-    });
-
-    const gambTabs = document.querySelectorAll('.menu-item') as NodeListType,
+    const headerTabs = document.querySelectorAll('.main-header-item') as NodeListType,
+          headerTabsParent = document.querySelector('.main-header') as ElementType,
+          gambTabs = document.querySelectorAll('.menu-item') as NodeListType,
           gambTabsParent = document.querySelector('.menu') as ElementType;
 
-    function MakeUnactiveGamb() {
-        gambTabs.forEach(item => {
-            item.classList.remove('menu-item-active');
-        }); 
-    };
-    
-    function MakeActiveGamb(i:number = 0) {
-        gambTabs[i].classList.add('menu-item-active');
-    };
+    headerTabsParent.addEventListener('click', (e) => changeActive(e, headerTabs, 'main-header-item'));
+    gambTabsParent.addEventListener('click', (e) => changeActive(e, gambTabs, 'menu-item'));
 
-    gambTabsParent.addEventListener('click', (e) => {
-        const gambTarget = e.target as ElementType;
-        if (gambTarget && gambTarget.classList.contains('menu-item')) {
-            gambTabs.forEach((item, i) => {
-                if (gambTarget == item) {
-                    MakeUnactiveGamb();
-                    MakeActiveGamb(i);
+    function changeActive(e: Event, tabs: NodeListType, classSelector: string):void {
+        const target = e.target as ElementType;
+        if (target && target.classList.contains(classSelector)) {
+            tabs.forEach((item, i) => {
+                if (target == item) {
+                    tabs.forEach(item => item.classList.remove('item-active')); 
+                    tabs[i].classList.add('item-active');
                 };
             });
         };
-    });
+    }
 
     //Gamb-menu
 
