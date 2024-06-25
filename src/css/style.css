@@ -1,3 +1,4 @@
+@import url("./fonts.css");
 html {
     scroll-behavior: smooth;
 }
@@ -15,7 +16,7 @@ a {
     padding: 0 16px;
 }
 .main-screen {
-    background: url("../images/main-screen-bg.jpg");
+    background: url("../assets/images/main-screen-bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     margin-top: -42px;
@@ -48,9 +49,7 @@ a {
     color: #FFF;
     opacity: 0.7; 
 }
-.item-active {
-    opacity: 1;
-}
+
 .header-profile {
     display: flex;
     gap: 8px;
@@ -686,6 +685,9 @@ a {
 }
 .hide {
     display: none;
+}
+.item-active {
+    opacity: 1;
 }
 @media(max-width: 1430px) {
     .container {
