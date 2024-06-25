@@ -13,7 +13,7 @@ module.exports = (env) => {
 
         mode: env.mode ?? 'development', //задает мод сборка или разработка
 
-        entry: path.resolve(__dirname, 'src', 'js', 'index.js'), //путь до входного файла, добавляет бабель
+        entry: path.resolve(__dirname, 'src', 'ts', 'index.ts'), //путь до входного файла, добавляет бабель
 
         output: {
             filename: '[name].[contenthash].js', //название выходного файла (name - берет имя входного файла, 
@@ -31,7 +31,11 @@ module.exports = (env) => {
                     test: /\.html$/i,
                     loader: "html-loader", // добавляем html loader чтобы заимпортить в js
                 }, 
-
+                {
+                    test: /\.tsx?$/,
+                    use: 'ts-loader',
+                    exclude: /node_modules/,    
+                },
                 {
                     test: /\.(c|sa|sc)ss$/i, // выбираем все файлы css, scss, sass
                     use: [

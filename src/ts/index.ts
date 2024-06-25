@@ -1,3 +1,6 @@
+import "../index.html";
+import "../css/style.css";
+
 type NodeListType = NodeListOf<Element>;
 type ElementType = HTMLElement;
 type InnerHTMLType = string;
