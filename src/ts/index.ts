@@ -69,37 +69,37 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     //Classes
-    class Activities {
+    // class Activities {
 
-        title:string
-        src:string
-        parentSelector!: string;
-        parent: ElementType
+    //     title:string
+    //     src:string
+    //     parentSelector!: string;
+    //     parent: ElementType
 
-        constructor(title:string, src:string, parentSelector: string) {
-            this.title = title;
-            this.src = src;
-            this.parent = document.querySelector(parentSelector) as ElementType;
-        }
+    //     constructor(title:string, src:string, parentSelector: string) {
+    //         this.title = title;
+    //         this.src = src;
+    //         this.parent = document.querySelector(parentSelector) as ElementType;
+    //     }
 
-        render(): void {
-            const element = document.createElement("div") as HTMLDivElement;
-            element.innerHTML = `
-                <div class = "activities-obj">
-                <img src = ${this.src}>
-                <div class = "fig-1">${this.title}</div>
-                </div>
-            ` as InnerHTMLType;
-            this.parent.append(element);
-        }
-    }
+    //     render(): void {
+    //         const element = document.createElement("div") as HTMLDivElement;
+    //         element.innerHTML = `
+    //             <div class = "activities-obj">
+    //                 <img src = "assets/images/act-1.jpg">
+    //                 <div class = "fig-1">${this.title}</div>
+    //             </div>
+    //         ` as InnerHTMLType;
+    //         this.parent.append(element);
+    //     }
+    // }
 
-    fetch('http://localhost:3000/menu').then(res => res.json())
-        .then(data => {
-            data.forEach(({title, src}:Activity) => {
-                new Activities(title, src, ".activities-row").render();
-            });
-        });
+    // fetch('http://localhost:3001/menu').then(res => res.json())
+    //     .then(data => {
+    //         data.forEach(({title, src}:Activity) => {
+    //             new Activities(title, src, ".activities-row").render();
+    //         });
+    //     });
 
     //Server
     const forms = document.querySelector('form') as HTMLFormElement;
@@ -109,7 +109,7 @@ window.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData(form) as FormData;
             const json = JSON.stringify(Object.fromEntries(formData.entries()));
             e.preventDefault();
-            fetch('http://localhost:3000/requests', {
+            fetch('https://jsonplaceholder.typicode.com/posts', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
